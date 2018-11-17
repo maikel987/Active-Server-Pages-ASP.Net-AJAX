@@ -1,0 +1,10 @@
+﻿@model IEnumerable<WebApplicationAgasha.Models.Client>
+
+<h2>All Client in DB</h2>
+
+@foreach (var item in Model)
+{
+    <div>@item.name</div>
+}
+<p>@DateTime.Now</p>
+

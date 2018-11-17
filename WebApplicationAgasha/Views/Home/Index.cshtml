@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.unobtrusive-ajax.min.js"></script>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1>Data from my DB</h1>
+
+    <div>
+        @Ajax.ActionLink("Show Cities", "_ShowCity", new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "tableResult",
+        HttpMethod = "POST"
+    })
+
+        @Ajax.ActionLink("Show Clients", "_ShowClient", new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "tableResult",
+        HttpMethod = "POST",
+        OnFailure = "ErreurAfficheTableau"
+
+    })
+    </div>
+
+
+
+    <div id="tableResult">
+        Press one of the links to get data from DB
+     
+    </div>
+
+    <script type="text/javascript">
+        function ErreurAfficheTableau() {
+            $("#tableResult").html("An error happen, try again ...");
+        }
+    </script>
+
+
+    <p>@DateTime.Now</p>
+</body>
+</html>
